@@ -45,7 +45,7 @@ const Play = ({ word }) => {
           );
         })}
         <Modal
-          open={win || true}
+          open={win }
           onClose={() => {}}
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
