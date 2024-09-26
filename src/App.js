@@ -7,7 +7,7 @@ function App() {
   // const word = "route"?.toUpperCase().split("");
 
   const [loading, setLoading] = useState(true);
-  const [word, setWord] = useState("");
+  const [word, setWord] = useState([]);
   const fetchWord = async () => {
     try {
       fetch("http://localhost:8000/api/data")
