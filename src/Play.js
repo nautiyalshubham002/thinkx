@@ -4,9 +4,10 @@ import Tile from "./Tile";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Keyboard from "./Kayboard";
-const Play = ({ word }) => {
+const Play = ({ word = [] }) => {
   const [active, setActive] = useState(0);
   const [win, setWin] = useState(false);
+  const [lost, setLost] = useState(false);
   const [lettersUsed, setLetterUsed] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
@@ -14,6 +15,10 @@ const Play = ({ word }) => {
       navigate("/");
     }
   }, [word, navigate]);
+
+  useEffect(() => {
+    if (active >= 5) setLost(true);
+  }, [active]);
   return (
     <Stack height={"100vh"}>
       <Header />
@@ -35,7 +40,6 @@ const Play = ({ word }) => {
               word={word}
               onSubmit={(keys) => {
                 if (keys?.join("") === word?.join("")) {
-                  setActive(6);
                   setWin(true);
                 }
                 setLetterUsed([...new Set([...lettersUsed, ...keys])]);
@@ -45,7 +49,7 @@ const Play = ({ word }) => {
           );
         })}
         <Modal
-          open={win }
+          open={win}
           onClose={() => {}}
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
@@ -72,6 +76,67 @@ const Play = ({ word }) => {
               }}
             >
               SPLENDID
+            </Typography>
+            <Stack
+              sx={{
+                width: "100%",
+                justifyContent: "end !important",
+                flexDirection: "row",
+              }}
+            >
+              <Button
+                sx={{
+                  color: "orange",
+                  border: "1px solid orange",
+                }}
+                variant="outlined"
+                onClick={() => {
+                  navigate("/");
+                }}
+              >
+                Next
+              </Button>
+            </Stack>
+          </Box>
+        </Modal>
+        <Modal
+          open={lost}
+          onClose={() => {}}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box
+            sx={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              width: 400,
+              bgcolor: "background.paper",
+              border: "1px solid #000",
+              boxShadow: 24,
+              p: 4,
+            }}
+          >
+            <Typography
+              id="modal-modal-title"
+              variant="h6"
+              component="h2"
+              sx={{
+                color: "orange",
+              }}
+            >
+              You Lost
+            </Typography>
+            <Typography
+              id="modal-modal-title"
+              variant="h6"
+              component="h2"
+              sx={{
+                color: "orange",
+              }}
+            >
+              Correct Word is {word?.join("").toUpperCase()}
             </Typography>
             <Stack
               sx={{
