@@ -11,7 +11,7 @@ const Play = ({ word = [] }) => {
   const [lettersUsed, setLetterUsed] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
-    if (word?.length !== 6) {
+    if (word?.length !== 5) {
       navigate("/");
     }
   }, [word, navigate]);
