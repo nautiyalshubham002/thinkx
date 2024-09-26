@@ -15,7 +15,7 @@ class CustomHandler(BaseHTTPRequestHandler):
             # Select a random word from the array
             random_word = random.choice(words)
 
-
+            print(f'word is {random_word}")
             response_data = {
                 'message': 'Hello, World!',
                 'data': random_word
