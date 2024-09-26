@@ -17,7 +17,7 @@ const Play = ({ word = [] }) => {
   }, [word, navigate]);
 
   useEffect(() => {
-    if (active >= 5) setLost(true);
+    if (active >= 6) setLost(true);
   }, [active]);
   return (
     <Stack height={"100vh"}>
