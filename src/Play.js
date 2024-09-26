@@ -91,7 +91,7 @@ const Play = ({ word = [] }) => {
                 }}
                 variant="outlined"
                 onClick={() => {
-                  navigate("/");
+                  window.location.href = "/";
                 }}
               >
                 Next
@@ -152,7 +152,7 @@ const Play = ({ word = [] }) => {
                 }}
                 variant="outlined"
                 onClick={() => {
-                  navigate("/");
+                  window.location.href = "/";
                 }}
               >
                 Next
