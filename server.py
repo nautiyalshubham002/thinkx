@@ -10,7 +10,7 @@ class CustomHandler(BaseHTTPRequestHandler):
             self.end_headers()
 
 
-            words = ["apple", "stark", "click", "debug", "check"]
+            words = ["apple", "bread", "dance", "chair", "table", "sugar", "water", "light", "plane", "value", "heart", "ready", "craft", "sound", "clear", "baker", "phone", "blues", "jumpy", "smart", "scope", "write", "drink", "story", "money", "paint", "class", "laugh", "dance", "peace", "treat", "world", "guard", "bring", "fifty", "house", "march", "score", "frame", "level", "money", "shine", "trust", "study", "error", "scale", "media", "value", "image"]
 
             # Select a random word from the array
             random_word = random.choice(words)
