@@ -44,15 +44,14 @@ const Play = ({ word = [] }) => {
               onSubmit={(keys) => {
                 if (keys?.join("") === word?.join("")) {
                   setWin(true);
-                }
+                } else setActive(active + 1);
                 setLetterUsed([...new Set([...lettersUsed, ...keys])]);
-                setActive(active + 1);
               }}
             />
           );
         })}
         <Modal
-          open={win }
+          open={win}
           onClose={() => {}}
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
