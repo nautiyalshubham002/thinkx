@@ -1,6 +1,9 @@
 import { Box, Button, Modal, Snackbar, Stack, Typography } from "@mui/material";
 import Header from "./Header";
 import Tile from "./Tile";
+import logo from "./congrats.gif";
+import logo2 from "./win.jpg";
+
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Keyboard from "./Kayboard";
@@ -49,7 +52,7 @@ const Play = ({ word = [] }) => {
           );
         })}
         <Modal
-          open={win}
+          open={win || true}
           onClose={() => {}}
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
@@ -80,14 +83,20 @@ const Play = ({ word = [] }) => {
             <Stack
               sx={{
                 width: "100%",
-                justifyContent: "end !important",
+                justifyContent: "space-between",
                 flexDirection: "row",
+                display: "flex",
+                alignItems: "center",
               }}
             >
+              <img alt="logo" src={logo} height={"80px"} width={"200px"}></img>
+              <img alt="logo" src={logo2} height={"80px"} width={"200px"}></img>
+
               <Button
                 sx={{
                   color: "orange",
                   border: "1px solid orange",
+                  height: "40px",
                 }}
                 variant="outlined"
                 onClick={() => {
