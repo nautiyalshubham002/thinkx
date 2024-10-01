@@ -8,6 +8,7 @@ function App() {
 
   const [loading, setLoading] = useState(true);
   const [word, setWord] = useState([]);
+  const [hint, setHint] = useState("");
   const fetchWord = async () => {
     try {
       fetch("http://localhost:8000/api/data")
@@ -19,9 +20,12 @@ function App() {
         })
         .then((data) => {
           setLoading(false);
-          const name = data.data || "check";
+          const obj = data.data;
+
+          const name = Object.keys(obj)[0] || "check";
+          const hint = Object.values(obj)[0] || "";
+          setHint(hint);
           setWord(name.toUpperCase("").split(""));
-          console.log({ datadata: data });
         })
         .catch((error) => {
           setLoading(false);
@@ -38,7 +42,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/play" element={<Play word={word} loading={loading} />} />
+        <Route path="/play" element={<Play word={word} loading={loading} hint={hint} />} />
         <Route path="/" element={<Main loading={loading} />}></Route>
       </Routes>
     </BrowserRouter>
