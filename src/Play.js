@@ -27,18 +27,20 @@ const Play = ({ word = [], hint }) => {
   return (
     <Stack height={"100vh"}>
       <Header />
-      <Stack
-        style={{
-          position: "absolute",
-          right: "10px",
-          top: "10px",
-        }}
-        onClick={() => {
-          setShowHint(true);
-        }}
-      >
-        <img alt="hint" src={hintimg} style={{ height: "30px" }}></img>
-      </Stack>
+      {active === 4 && (
+        <Stack
+          style={{
+            position: "absolute",
+            right: "10px",
+            top: "10px",
+          }}
+          onClick={() => {
+            setShowHint(true);
+          }}
+        >
+          <img alt="hint" src={hintimg} style={{ height: "30px" }}></img>
+        </Stack>
+      )}
       <Stack
         sx={{
           display: "flex",
